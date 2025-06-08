@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAA TARINI PRINTING PRESS</title>
+    <link rel="stylesheet" href="CSS/Style2.css">
+    <script src="3DAnimation.js"></script>
+</head>
+
+<body>
+    <section class="hero" id="home">
+        <h2 class="floating">Your One-Stop Printing Solution</h2>
+        <p class="pulsing">Providing top-quality printing services for all your business and personal needs.</p>
+    </section>
+
+    <div class="container" id="services">
+        <h2 class="rotating">Our Services</h2>
+        <div class="services">
+            <div class="service-box bouncing">
+                <img src="Photos/Business Card for Home.jpeg" alt="Business Cards">
+                <h3>Business Cards</h3>
+                <p>Premium quality business cards with custom designs.</p>
+            </div>
+            <div class="service-box scaling">
+                <img src="Photos/Brouchers for Home.jpeg" alt="Brochures">
+                <h3>Brochures & Flyers</h3>
+                <p>Eye-catching brochures and flyers to promote your business.</p>
+            </div>
+            <div class="service-box zigzag">
+                <img src="Photos/Banner.jpg" alt="Banners">
+                <h3>Posters & Banners</h3>
+                <p>High-quality posters and banners for events & advertising.</p>
+            </div>
+            <div class="service-box fading">
+                <img src="Photos/Booklets.jpg" alt="Booklets">
+                <h3>Booklets</h3>
+                <p>Custom booklets for business and personal use.</p>
+            </div>
+            <div class="service-box sliding">
+                <img src="Photos/Letterheads.jpg" alt="Letterheads">
+                <h3>Letterheads</h3>
+                <p>Professional letterheads for official use.</p>
+            </div>
+            <div class="service-box shaking">
+                <img src="Photos/Envelopes.jpg" alt="Envelopes">
+                <h3>Envelopes</h3>
+                <p>Custom printed envelopes for branding.</p>
+            </div>
+            <div class="service-box spinning">
+                <img src="Photos/T- Shirts.jpg" alt="T-Shirts">
+                <h3>Printed T-Shirts</h3>
+                <p>Customized T-shirts with high-quality prints.</p>
+            </div>
+            <div class="service-box wobbling">
+                <img src="Photos/Label.jpg" alt="Labels">
+                <h3>Labels</h3>
+                <p>Branding stickers and labels for businesses.</p>
+            </div>
+            <div class="service-box floating">
+                <img src="Photos/Calender.jpg" alt="Calendars">
+                <h3>Custom Calendars</h3>
+                <p>Personalized calendars for corporate & personal use.</p>
+            </div>
+            <div class="service-box pulsing">
+                <img src="Photos/Certificate.jpg" alt="Certificates">
+                <h3>Certificates</h3>
+                <p>Elegant certificate printing for schools & businesses.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="contact" id="contact">
+            <h2 class="floating">Contact Us</h2>
+            <p>Email: maataraneepp@gmail.com, Phone: +91 9313872230, +91 9318306439</p>
+            <p>Address: Surya Vihar Part-III, Near Deeksha Public School, Sector-91, Faridabad, Haryana-121003</p>
+            <p>&copy; 2025 MAA TARINI PRINTING PRESS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scrolling Function
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Dark/Light Mode Toggle Function
+        function toggleMode() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                button.textContent = 'Switch to Light Mode';
+            } else {
+                button.textContent = 'Switch to Dark Mode';
+            }
+        }
+    </script>
+</body>
+
+</html>
