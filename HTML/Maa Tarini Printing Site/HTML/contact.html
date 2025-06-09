@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | MAA TARINI PRINTING PRESS</title>
+  <link rel="stylesheet" href="/HTML/Maa Tarini Printing Site/CSS/contact.css" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+
+<body>
+    <section class="contact-section">
+    <h1>Contact MAA TARINI PRINTING PRESS</h1>
+    <p>We’d love to hear from you! Reach out with your printing needs.</p>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Our Details</h2>
+        <p><strong>Email:</strong> maataraneepp@gmail.com</p>
+        <p><strong>Phone:</strong> +91 9313872230, +91 9318306439</p>
+        <p><strong>Address:</strong> Surya Vihar Part-III, Near Deeksha Public School, Sector-91, Faridabad, Haryana-121003</p>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form id="contactForm">
+          <input type="text" name="from_name" placeholder="Your Name" required />
+          <input type="email" name="from_email" placeholder="Your Email" required />
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+        <p id="form-message"></p>
+      </div>
+    </div>
+<button class="back-button" onclick="location.href='index.html';">Back to Home</button>
+
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Faridabad%20Sector%2091&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MAA TARINI PRINTING PRESS. All rights reserved.</p>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/9313872230" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp">
+  </a>
+
+  <script>
+    // EmailJS init
+    emailjs.init("YOUR_USER_ID"); // 🔁 Replace with your EmailJS user ID
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => {
+          document.getElementById("form-message").textContent = "✅ Message sent successfully!";
+          this.reset();
+        }, (error) => {
+          document.getElementById("form-message").textContent = "❌ Failed to send message.";
+        });
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+</body>
+
+</html>

@@ -1,216 +1,67 @@
-// Ensure GSAP is loaded
-if (typeof gsap === "undefined") {
-    var script = document.createElement("script");
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
-    document.head.appendChild(script);
-}
+// JavaScript enhancements for MAA TARINI PRINTING PRESS site
+// Focus on smooth scrolling, sticky navigation, and theme toggle with accessibility and minimal UI interactions.
 
-// Apply animations to all elements
-window.addEventListener("load", function () {
-    gsap.utils.toArray(".service-box").forEach(box => {
-        let animation = gsap.to(box, {
-            rotationY: 360,
-            duration: 5,
-            repeat: -1,
-            ease: "linear"
-        });
-        
-        const toggleAnimation = () => {
-            if (animation.isActive()) {
-                animation.pause();
-                gsap.to(box, {
-                    scale: 1.2,
-                    duration: 0.5,
-                    yoyo: true,
-                    repeat: 1,
-                    ease: "power1.inOut"
-                });
-            } 
-        };
-        
+// Smooth scrolling for anchor links with offset for sticky nav
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('nav a[href^="#"], nav a[onclick]');
+  const headerOffset = 70; // Approximate height of header/nav
 
-        box.addEventListener("click", toggleAnimation);
-        box.addEventListener("touchstart", toggleAnimation);
-    });
+  navLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      let targetId = '';
+      if(link.hasAttribute('href')) {
+        targetId = link.getAttribute('href');
+      } else if(link.hasAttribute('onclick')) {
+        // For links with "onclick" scrollToSection
+        const onclick = link.getAttribute('onclick');
+        // Extract ID from scrollToSection('id')
+        const match = onclick.match(/scrollToSection\\(['"](.+?)['"]\\)/);
+        if(match && match[1]) targetId = '#' + match[1];
+      }
 
-    let heroAnimation = gsap.to(".hero h2, .hero p", {
-        y: 10,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.5,
-        ease: "sine.inOut"
-    });
-    
-    const toggleHeroAnimation = () => {
-        if (heroAnimation.isActive()) {
-            heroAnimation.pause();
-        } else {
-            heroAnimation.resume();
+      if(targetId && targetId.startsWith('#')) {
+        const targetElem = document.querySelector(targetId);
+        if(targetElem){
+          const elementPosition = targetElem.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
-    };
-
-    document.querySelector(".hero").addEventListener("click", toggleHeroAnimation);
-    document.querySelector(".hero").addEventListener("touchstart", toggleHeroAnimation);
-
-    document.querySelectorAll(".service-box").forEach(box => {
-        box.addEventListener("mousemove", (e) => {
-            const { offsetX, offsetY, target } = e;
-            const { offsetWidth, offsetHeight } = target;
-            const xRotation = ((offsetY / offsetHeight) - 0.5) * 30;
-            const yRotation = ((offsetX / offsetWidth) - 0.5) * 30;
-            gsap.to(box, { rotateX: xRotation, rotateY: yRotation, duration: 0.2 });
-        });
-
-        box.addEventListener("mouseleave", () => {
-            gsap.to(box, { rotateX: 0, rotateY: 0, duration: 0.3 });
-        });
+      }
     });
+  });
 
-    let toggleAnimation = gsap.to(".theme-toggle", {
-        scale: 1.1,
-        repeat: -1,
-        yoyo: true,
-        duration: 0.8,
-        ease: "power1.inOut"
-    });
+  // Theme toggle button (optional): insert a toggle button in header if not present
+  if(!document.getElementById('theme-toggle-button')){
+    const header = document.querySelector('header');
+    if(header){
+      const btn = document.createElement('button');
+      btn.id = 'theme-toggle-button';
+      btn.setAttribute('aria-label', 'Toggle light and dark mode');
+      btn.textContent = '🌙 Dark Mode';
+      btn.style.cursor = 'pointer';
+      btn.style.marginLeft = '1rem';
+      btn.style.padding = '0.3rem 0.8rem';
+      btn.style.border = 'none';
+      btn.style.borderRadius = '6px';
+      btn.style.backgroundColor = '#1e40af';
+      btn.style.color = 'white';
+      btn.style.fontWeight = '600';
+      btn.style.fontSize = '1rem';
+      btn.style.transition = 'background-color 0.3s ease';
+      btn.addEventListener('mouseenter', () => btn.style.backgroundColor = '#3b82f6');
+      btn.addEventListener('mouseleave', () => btn.style.backgroundColor = '#1e40af');
 
-    const toggleThemeAnimation = () => {
-        if (toggleAnimation.isActive()) {
-            toggleAnimation.pause();
-        } else {
-            toggleAnimation.resume();
-        }
-    };
-
-    document.querySelector(".theme-toggle").addEventListener("click", toggleThemeAnimation);
-    document.querySelector(".theme-toggle").addEventListener("touchstart", toggleThemeAnimation);
-
-    // Apply motion to all elements
-    gsap.utils.toArray("* :not(script)").forEach(el => {
-        let fadeInAnimation = gsap.fromTo(el, {
-            opacity: 0,
-            y: 20
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 1.5,
-            ease: "power2.out",
-            stagger: 0.1
-        });
-        
-        const toggleFadeAnimation = () => {
-            if (fadeInAnimation.isActive()) {
-                fadeInAnimation.pause();
-            } else {
-                fadeInAnimation.resume();
-            }
-        };
-
-        el.addEventListener("click", toggleFadeAnimation);
-        el.addEventListener("touchstart", toggleFadeAnimation);
-    });
-
-    let bgAnimation = gsap.to("body", {
-        backgroundPositionX: "+=50px",
-        repeat: -1,
-        yoyo: true,
-        duration: 5,
-        ease: "linear"
-    });
-
-    const toggleBgAnimation = () => {
-        if (bgAnimation.isActive()) {
-            bgAnimation.pause();
-        } else {
-            bgAnimation.resume();
-        }
-    };
-
-    document.body.addEventListener("click", toggleBgAnimation);
-    document.body.addEventListener("touchstart", toggleBgAnimation);
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        let isDark = document.body.classList.contains('dark-mode');
+        btn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+      });
+      header.appendChild(btn);
+    }
+  }
 });
-// Ensure GSAP is loaded
-if (typeof gsap === "undefined") {
-    var script = document.createElement("script");
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
-    document.head.appendChild(script);
-}
 
-// Apply animations to all elements
-window.addEventListener("load", function () {
-    gsap.utils.toArray(".service-box").forEach(box => {
-        let animation = gsap.to(box, {
-            rotationY: 360,
-            duration: 5,
-            repeat: -1,
-            ease: "linear"
-        });
-        
-        const toggleAnimation = () => {
-            if (animation.isActive()) {
-                animation.pause();
-                gsap.to(box, {
-                    scale: 1.2,
-                    duration: 0.5,
-                    yoyo: true,
-                    repeat: 1,
-                    ease: "power1.inOut",
-                    onComplete: () => animation.resume()
-                });
-            } 
-        };
-
-        box.addEventListener("click", toggleAnimation);
-        box.addEventListener("touchstart", toggleAnimation);
-    });
-
-    let heroAnimation = gsap.to(".hero h2, .hero p", {
-        y: 10,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.5,
-        ease: "sine.inOut"
-    });
-    
-    const toggleHeroAnimation = () => {
-        if (heroAnimation.isActive()) {
-            heroAnimation.pause();
-            gsap.to(".hero", {
-                scale: 1.1,
-                duration: 0.5,
-                yoyo: true,
-                repeat: 1,
-                ease: "power1.inOut",
-                onComplete: () => heroAnimation.resume()
-            });
-        }
-    };
-
-    document.querySelector(".hero").addEventListener("click", toggleHeroAnimation);
-    document.querySelector(".hero").addEventListener("touchstart", toggleHeroAnimation);
-
-    let bgAnimation = gsap.to("body", {
-        backgroundPositionX: "+=50px",
-        repeat: -1,
-        yoyo: true,
-        duration: 5,
-        ease: "linear"
-    });
-
-    const toggleBgAnimation = () => {
-        if (bgAnimation.isActive()) {
-            bgAnimation.pause();
-            gsap.to("body", {
-                scale: 1.02,
-                duration: 0.5,
-                yoyo: true,
-                repeat: 1,
-                ease: "power1.inOut",
-                onComplete: () => bgAnimation.resume()
-            });
-        }
-    };
-
-    document.body.addEventListener("click", toggleBgAnimation);
-    document.body.addEventListener("touchstart", toggleBgAnimation);
-});

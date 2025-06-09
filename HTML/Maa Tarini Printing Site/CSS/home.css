@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #fdfbff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Hero Header */
+.hero-header {
+    text-align: center;
+    background: linear-gradient(to right, #7b1fa2, #9c27b0);
+    color: white;
+    padding: 4rem 2rem;
+    border-bottom: 4px solid #4a0072; /* Added a border for emphasis */
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.6rem;
+    background-color: white;
+    color: #7b1fa2;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s; /* Added transform for scaling */
+}
+
+.cta-button:hover {
+    background-color: #eee;
+    transform: scale(1.05); /* Subtle scaling effect on hover */
+}
+
+/* About Preview */
+.about-preview {
+    padding: 2rem;
+    text-align: center;
+}
+
+.about-preview ul {
+    margin-top: 1rem;
+    list-style: none;
+    line-height: 2;
+    font-size: 1.1rem;
+}
+
+/* Highlights Section */
+.highlights {
+    padding: 2rem;
+    background: #f3e5f5;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.card {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    transition: transform 0.3s; /* Added transition for scaling */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Subtle lift effect on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #4a0072;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Animations */
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+.pulsing {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.7; }
+}
+
+.rotating {
+    animation: rotate 5s linear infinite;
+}
+
+.bouncing {
+    animation: bounce 1.5s infinite;
+}
+.back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: plum;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-button:hover {
+    background-color: rgb(248, 70, 248);
+    transform: translateY(-2px);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.fading {
+    animation: fade 3s ease-in-out infinite;
+}
+
+@keyframes fade {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.scaling {
+    animation: scale 2.5s ease-in-out infinite;
+}
+
+@keyframes scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
