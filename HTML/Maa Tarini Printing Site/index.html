@@ -6,7 +6,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAA TARINI PRINTING PRESS</title>
     <link rel="stylesheet" href="CSS/style.css">
+<style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+                color: #333;
+            }
 
+            header {
+                background: #333;
+                color: white;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                background: #444;
+                padding: 10px;
+                margin: -6px;
+            }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                padding: 15px 20px;
+                font-size: 18px;
+            }
+
+            nav a:hover {
+                background: #555;
+            }
+
+            .container {
+                width: 80%;
+                margin: auto;
+                padding: 20px;
+                background:black;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            .timeline {
+                position: relative;
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 10px 40px;
+                list-style-type: none;
+            }
+
+            .timeline:before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                width: 2px;
+                background-color: #333;
+                top: 0;
+                bottom: 0;
+            }
+
+            .timeline-item {
+                padding: 20px 0;
+                position: relative;
+                width: 50%;
+            }
+
+            .timeline-item:before {
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                right: -10px;
+                background-color: white;
+                border: 3px solid #333;
+                top: 15px;
+                border-radius: 50%;
+                z-index: 1;
+            }
+
+            .timeline-item.left {
+                left: 0;
+            }
+
+            .timeline-item.right {
+                left: 50%;
+            }
+
+            .timeline-item.right:before {
+                left: -10px;
+            }
+
+            .timeline-content {
+                padding: 20px;
+                background-color: #ddd;
+                position: relative;
+                border-radius: 6px;
+            }
+
+            .timeline-item.left .timeline-content {
+                margin-left: 30px;
+            }
+
+            .timeline-item.right .timeline-content {
+                margin-right: 30px;
+            }
+
+            .language-toggle {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            @media screen and (max-width: 600px) {
+                .timeline:before {
+                    left: 20px;
+                }
+
+                .timeline-item {
+                    width: 100%;
+                    padding-left: 40px;
+                    padding-right: 25px;
+                }
+
+                .timeline-item.left,
+                .timeline-item.right {
+                    left: 0;
+                }
+
+                .timeline-item.left .timeline-content,
+                .timeline-item.right .timeline-content {
+                    margin: 0;
+                }
+
+                .timeline-item:before {
+                    left: 0;
+                    right: auto;
+                }
+            }
+        </style>
 </head>
 
 <body>
