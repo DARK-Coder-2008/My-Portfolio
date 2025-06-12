@@ -235,5 +235,24 @@ footer p {
     border-radius: 10px;
     border: 2px solid var(--color-bg);
 }
+.back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: plum;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-button:hover {
+    background-color: rgb(248, 70, 248);
+    transform: translateY(-2px);
+}
+
 
 
